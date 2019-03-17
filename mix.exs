@@ -32,6 +32,9 @@ defmodule Tetris.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:absinthe, "~> 1.4"},
+      {:absinthe_plug, "~> 1.4"},
+      {:absinthe_relay, "~> 1.4"},
       {:gproc, "~> 0.8.0"},
       {:jason, "~> 1.0"},
       {:phoenix, "~> 1.4.0"},
