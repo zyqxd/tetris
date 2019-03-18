@@ -8,14 +8,13 @@ defmodule Tetris do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      TetrisOtp.Supervisors.Player,
-      TetrisOtp.Supervisors.Room,
-      TetrisWeb.Endpoint,
+      TetrisOtp.Supervisors.Lobby,
+      TetrisWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: TetrisOtp.Supervisor]
+    opts = [strategy: :one_for_one]
     Supervisor.start_link(children, opts)
   end
 

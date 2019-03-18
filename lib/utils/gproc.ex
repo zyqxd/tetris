@@ -1,6 +1,6 @@
 defmodule Utils.Gproc do
   @moduledoc """
-  Elixir :gproc adapter module.
+  Elixir :gproc wrapper module.
   """
 
   @doc "Lookup by term, for local processes"
