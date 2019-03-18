@@ -18,5 +18,9 @@ defmodule TetrisWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  forward "/", TetrisWeb.MainController, :index
+  scope "/", TetrisWeb do
+    pipe_through :browser
+
+    get "/", Controller, :index
+  end
 end

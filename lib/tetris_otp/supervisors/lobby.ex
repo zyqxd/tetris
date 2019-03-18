@@ -13,7 +13,7 @@ defmodule TetrisOtp.Supervisors.Lobby do
   @supervises TetrisOtp.Supervisors.Room
 
   def start_link([]) do
-    Logger.info "Starting #{@key}"
+    Logger.info("Starting #{@key}")
     Supervisor.start_link(@key, :ok, name: @key)
   end
 

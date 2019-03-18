@@ -4,6 +4,11 @@ defmodule TetrisWeb.Endpoint do
   plug Plug.RequestId
   plug Plug.Logger
 
+  plug Plug.Static,
+    at: "/",
+    from: :tetris,
+    gzip: false
+
   if code_reloading? do
     plug Phoenix.CodeReloader
   end
@@ -17,10 +22,6 @@ defmodule TetrisWeb.Endpoint do
     store: :cookie,
     key: "_tetris_key",
     signing_salt: "2TJZiJl3"
-
-  # plug Plug.Static,
-  #   at: "/", from: :tetris, gzip: false,
-  #   only: ~w(html css fonts images js favicon.ico robots.txt)
 
   plug TetrisWeb.Router
 end

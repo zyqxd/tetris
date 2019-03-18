@@ -30,7 +30,8 @@ defmodule TetrisOtp.Servers.Match do
 
   def handle_call({:add_player, player}, _from, state) do
     %{match: match, players: players, max_players: max_players} = state
-    if (players.names |> Map.keys() |> length() == max_players) do
+
+    if players.names |> Map.keys() |> length() == max_players do
       {:reply, {:error, :match_full}, state}
     else
       # TODO(DZ): Test for if player name exists

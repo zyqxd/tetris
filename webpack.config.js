@@ -1,8 +1,8 @@
 const path = require('path');
-const glob = require('glob');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = (env, options) => ({
   optimization: {
@@ -11,17 +11,16 @@ module.exports = (env, options) => ({
       new OptimizeCSSAssetsPlugin({})
     ]
   },
-  entry: {
-    './web/app.js': ['./web/app.js'],
-  },
+  entry: './web/index.js',
   output: {
-    filename: 'app.js',
-    path: path.resolve(__dirname, './priv/static')
+    publicPath: '/',
+    filename: 'bundle.js',
+    path: path.resolve('priv/static')
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader'
@@ -34,6 +33,10 @@ module.exports = (env, options) => ({
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: '../css/app.css' }),
-  ]
+    new MiniCssExtractPlugin({ filename: 'styles.css' }),
+    new HtmlWebPackPlugin({
+      template: "./web/index.html",
+      filename: "index.html"
+    }),
+  ],
 });

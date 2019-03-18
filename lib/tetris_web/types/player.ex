@@ -5,19 +5,19 @@ defmodule TetrisWeb.Types.Player do
   use Absinthe.Schema.Notation
   use Absinthe.Relay.Schema.Notation, :modern
 
-  connection(node_type: :player)
+  connection node_type: :player
 
-  node object(:player) do
-    description("A player, belongs to a room")
+  node object :player do
+    description "A player, belongs to a room"
 
-    field(:name, non_null(:string))
+    field :name, non_null(:string)
   end
 
   object :player_mutations do
-    payload field(:do_action) do
-      input(do: field(:action, non_null(:string)))
+    payload field :do_action do
+      input do: field(:action, non_null(:string))
 
-      resolve(&TetrisWeb.Resolvers.Player.do_action/3)
+      resolve &TetrisWeb.Resolvers.Player.do_action/3
     end
   end
 end

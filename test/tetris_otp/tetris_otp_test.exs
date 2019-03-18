@@ -72,8 +72,9 @@ defmodule TetrisOtpTest do
 
     test "room cannot have two players of the same name" do
       assert {:ok, pid} = TetrisOtp.add_player_into(@room, @player)
+
       assert {:error, {:already_started, ^pid}} =
-        TetrisOtp.add_player_into(@room, @player)
+               TetrisOtp.add_player_into(@room, @player)
     end
 
     test "room cannot have more than max players (default 100)" do

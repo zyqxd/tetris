@@ -37,7 +37,7 @@ defmodule TetrisOtp.Supervisors.Room do
   def init({room, max_players}) do
     children = [
       {TetrisOtp.Supervisors.RoomPlayer, room},
-      {TetrisOtp.Servers.Match, {room, max_players}},
+      {TetrisOtp.Servers.Match, {room, max_players}}
     ]
 
     Supervisor.init(children, strategy: :one_for_one)
