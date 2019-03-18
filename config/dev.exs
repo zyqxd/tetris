@@ -13,11 +13,10 @@ config :tetris, TetrisWeb.Endpoint,
   check_origin: false,
   watchers: [
     node: [
-      "node_modules/webpack/bin/webpack.js",
+      "./node_modules/webpack/bin/webpack.js",
       "--mode",
       "development",
       "--watch-stdin",
-      cd: Path.expand("../assets", __DIR__)
     ]
   ]
 
